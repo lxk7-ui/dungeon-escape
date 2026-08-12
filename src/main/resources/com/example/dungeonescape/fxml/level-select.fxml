@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.example.dungeonescape.ui.DungeonBackground?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  选关页：与主菜单同一美术体系（DungeonBackground）。
+  内容列：关卡主题小图标装饰行（控制器填充真实 sprite）→ 标题 → 卡片列表
+  （ScrollPane，深色定制；默认尺寸内容不超出、无滚动条，小窗口按需滚动）
+  → 返回主菜单按钮。5 张卡片 + 返回按钮均 focusTraversable=true，
+  初始焦点在第一关，UP/DOWN 方向键与 Tab 均可导航（LevelSelectController）。
+-->
+<StackPane fx:id="rootPane" styleClass="root, dungeon-root"
+           xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.dungeonescape.ui.LevelSelectController">
+    <DungeonBackground/>
+    <VBox styleClass="dungeon-content" alignment="TOP_CENTER" spacing="12" maxWidth="660">
+        <HBox fx:id="levelIconStrip" styleClass="level-icon-strip" alignment="CENTER"
+              spacing="20"/>
+        <Label styleClass="app-title" text="选择关卡" maxWidth="Infinity"
+               textAlignment="CENTER"/>
+        <!-- minHeight=0：允许在剩余空间不足时收缩并滚动（默认 minHeight 为内容高会撑爆场景） -->
+        <ScrollPane fx:id="levelScrollPane" styleClass="dungeon-scroll" fitToWidth="true"
+                    hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" maxWidth="Infinity"
+                    maxHeight="Infinity" minHeight="0" VBox.vgrow="ALWAYS">
+            <VBox fx:id="levelCardsBox" styleClass="level-cards" spacing="8"
+                  alignment="TOP_CENTER" maxWidth="Infinity"/>
+        </ScrollPane>
+        <Button fx:id="backButton" styleClass="secondary-button" text="返回主菜单"
+                onAction="#onBackClick" maxWidth="300" prefWidth="300"/>
+    </VBox>
+</StackPane>

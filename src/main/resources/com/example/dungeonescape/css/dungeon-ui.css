@@ -1,0 +1,216 @@
+/* dungeon-ui.css —— 主菜单 / 选关页地牢视觉基础（Stage A）
+   与 game.css 一同加载（本表后加载，同名规则优先）。
+   色板 token 与 DungeonTheme 一致（对齐 art-direction 视觉稿取样）。 */
+
+.dungeon-root {
+    -fx-background-color: #0a0d12;
+}
+
+/* 背景层由 DungeonTheme.createBackground 构建（fx:factory），
+   仅声明兜底色，实际纹理/渐变在代码中填充 */
+.dungeon-bg-layer {
+    -fx-background-color: #0a0d12;
+}
+
+/* ---- 内容列：居中、留边，任何窗口尺寸下不贴边 ---- */
+.dungeon-content {
+    -fx-padding: 28px 44px 28px 44px;
+}
+
+/* ---- 石板内容面板：稳定层次，与背景石砖形成硬朗边界 ---- */
+.menu-panel {
+    -fx-background-color: linear-gradient(to bottom, rgba(22, 28, 38, 0.92), rgba(14, 18, 26, 0.94));
+    -fx-background-radius: 6px;
+    -fx-border-color: #46536b;
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-padding: 34px 40px 34px 40px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 18, 0.35, 0, 4);
+}
+
+/* ---- 标题：金色 + 硬边阴影（像素感，多级位移模拟硬边） ---- */
+.app-title {
+    -fx-font-size: 42px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffd76a;
+    -fx-effect: dropshadow(gaussian, rgba(60, 40, 4, 0.9), 0, 0, 0, 3),
+                  dropshadow(gaussian, rgba(255, 215, 106, 0.35), 10, 0.25, 0, 0);
+}
+
+.app-subtitle {
+    -fx-font-size: 16px;
+    -fx-text-fill: #d4d9e4;
+    -fx-font-weight: 600;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.85), 0, 0, 0, 2);
+}
+
+/* ---- 标题下装饰分隔条：真实砖墙素材平铺（控制器填充）+ 石质边框 ---- */
+.menu-divider {
+    -fx-border-color: #46536b;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+}
+
+/* ---- 蓝色主按钮（开始游戏）：硬朗石质边框，像素化圆角 ---- */
+.primary-button {
+    -fx-background-color: linear-gradient(to bottom, #2450b8, #1b419a);
+    -fx-text-fill: #f2f5ff;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4px;
+    -fx-border-color: #0e1c3d;
+    -fx-border-width: 2.5px;
+    -fx-border-radius: 4px;
+    -fx-padding: 12px 24px;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #2d5cc9, #2450b8);
+    -fx-border-color: #7d9df0;
+}
+
+.primary-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #14336f, #102b5e);
+    -fx-border-color: #0a1428;
+}
+
+/* ---- 深色次按钮（退出游戏 / 返回主菜单）：石板青灰色，非桌面灰 ---- */
+.secondary-button {
+    -fx-background-color: linear-gradient(to bottom, #4a5568, #3a4554);
+    -fx-text-fill: #e8eaf0;
+    -fx-font-size: 15px;
+    -fx-background-radius: 4px;
+    -fx-border-color: #1d2530;
+    -fx-border-width: 2.5px;
+    -fx-border-radius: 4px;
+    -fx-padding: 11px 24px;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #57657c, #4a5568);
+    -fx-border-color: #8b9bb5;
+}
+
+.secondary-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #2d3542, #262e38);
+    -fx-border-color: #161c24;
+}
+
+/* ---- 键盘焦点：清楚的金色描边 + 光晕（不能只靠微弱变色） ---- */
+.primary-button:focused,
+.secondary-button:focused {
+    -fx-border-color: #ffd76a;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 106, 0.7), 16, 0.45, 0, 0);
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+    -fx-opacity: 0.45;
+}
+
+/* ---- 选关卡片：硬朗石板边框 ---- */
+.level-cards {
+    -fx-padding: 2px;
+}
+
+.level-card {
+    -fx-background-color: linear-gradient(to right, #1a2130, #12161f);
+    -fx-background-radius: 6px;
+    -fx-border-color: #46536b;
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-padding: 8px 16px;
+    -fx-alignment: center-left;
+    -fx-cursor: hand;
+}
+
+.level-card:hover {
+    -fx-background-color: linear-gradient(to right, #222c40, #1a2130);
+    -fx-border-color: #7d9df0;
+}
+
+.level-card:pressed {
+    -fx-background-color: linear-gradient(to right, #10141d, #0c1017);
+    -fx-border-color: #1d2530;
+}
+
+.level-card:focused {
+    -fx-border-color: #ffd76a;
+    -fx-border-width: 2.5px;
+    -fx-background-color: linear-gradient(to right, #242f45, #1a2130);
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 106, 0.65), 14, 0.4, 0, 0);
+}
+
+.level-card:disabled {
+    -fx-opacity: 0.5;
+}
+
+.level-card-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffd76a;
+}
+
+.level-card-desc {
+    -fx-font-size: 12.5px;
+    -fx-text-fill: #a9b2c4;
+}
+
+.level-card-icon {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0.3, 0, 1);
+}
+
+/* ---- 标题上方装饰图标行 ---- */
+.level-icon-strip {
+    -fx-padding: 0 0 2px 0;
+}
+
+/* ---- 深色定制 ScrollPane（小窗口按需滚动，默认尺寸无滚动条） ---- */
+.dungeon-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: #2a3140;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 4px;
+}
+
+.dungeon-scroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.dungeon-scroll .corner {
+    -fx-background-color: transparent;
+}
+
+.dungeon-scroll .scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 10px;
+    -fx-pref-height: 10px;
+}
+
+.dungeon-scroll .scroll-bar .thumb {
+    -fx-background-color: #3a4254;
+    -fx-background-radius: 5px;
+}
+
+.dungeon-scroll .scroll-bar .thumb:hover {
+    -fx-background-color: #54627c;
+}
+
+.dungeon-scroll .scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.dungeon-scroll .scroll-bar .increment-button,
+.dungeon-scroll .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}

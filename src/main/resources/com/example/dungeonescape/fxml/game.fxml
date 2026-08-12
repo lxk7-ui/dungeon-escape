@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.example.dungeonescape.ui.DungeonBackground?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  游戏界面：与主菜单/选关页同一地牢外壳（DungeonBackground 石砖边框 + 纹理），
+  内部为 BorderPane（HUD 顶部 / 地图区 / 固定操作栏底部）。
+  地图区：ScrollPane（fitToWidth/fitToHeight=false，不拉伸 48px 格子，按需滚动）
+  └── StackPane #mapOuterPane（外层居中容器：min 尺寸绑定视口 → 小地图居中）
+      └── VBox #boardFrame（石板棋盘框：按内容收缩，不遮挡任何可走格）
+          └── GridPane #mapGridPane（48px 格子，像素清晰）
+  底部操作按钮均 focusTraversable=true（Tab/Shift+Tab 循环，Enter/Space 触发）；
+  游戏方向键输入由场景级 capture 过滤器接管（GameController），
+  焦点落在按钮上时方向键仍移动角色，不受按钮方向键遍历干扰。
+-->
+<StackPane fx:id="rootPane" styleClass="root, dungeon-root"
+           xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.dungeonescape.ui.GameController">
+    <DungeonBackground/>
+    <BorderPane styleClass="game-shell">
+        <top>
+            <VBox styleClass="game-header" alignment="CENTER" spacing="5">
+                <Label fx:id="levelNameLabel" styleClass="level-name" maxWidth="Infinity"
+                       alignment="CENTER" textAlignment="CENTER"/>
+                <!-- 长目标限宽 720、可换行：Level 5 复合目标不贴顶栏、不溢出 -->
+                <Label fx:id="goalLabel" styleClass="goal-text" wrapText="true"
+                       alignment="CENTER" textAlignment="CENTER" maxWidth="720"/>
+                <HBox alignment="CENTER" spacing="34" styleClass="status-bar">
+                    <HBox alignment="CENTER" spacing="8">
+                        <Label styleClass="status-caption" text="步数"/>
+                        <Label fx:id="stepsLabel" styleClass="status-value" text="0"/>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="8">
+                        <Label styleClass="status-caption" text="宝物"/>
+                        <Label fx:id="treasureLabel" styleClass="status-value" text="0/0"/>
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="8">
+                        <Label styleClass="status-caption" text="钥匙"/>
+                        <Label fx:id="keyLabel" styleClass="status-value" text="无"/>
+                    </HBox>
+                </HBox>
+            </VBox>
+        </top>
+        <center>
+            <ScrollPane fx:id="mapScrollPane" styleClass="map-scroll"
+                        fitToWidth="false" fitToHeight="false"
+                        hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" pannable="true">
+                <StackPane fx:id="mapOuterPane" styleClass="map-outer" alignment="CENTER">
+                    <!-- 棋盘框 max 尺寸由控制器设为 USE_PREF_SIZE：按内容收缩、
+                        不被外层 StackPane 拉伸，由外层容器在剩余区域内水平垂直居中 -->
+                    <VBox fx:id="boardFrame" styleClass="board-frame" alignment="CENTER">
+                        <GridPane fx:id="mapGridPane" styleClass="map-grid" hgap="0" vgap="0"/>
+                    </VBox>
+                </StackPane>
+            </ScrollPane>
+        </center>
+        <bottom>
+            <HBox alignment="CENTER" spacing="16" styleClass="game-footer">
+                <Button fx:id="restartButton" styleClass="primary-button" text="重新开始"
+                        onAction="#onRestartClick" maxWidth="180" prefWidth="180"/>
+                <Button fx:id="levelSelectButton" styleClass="secondary-button" text="选择关卡"
+                        onAction="#onLevelSelectClick" maxWidth="180" prefWidth="180"/>
+                <Button fx:id="mainMenuButton" styleClass="secondary-button" text="主菜单"
+                        onAction="#onMainMenuClick" maxWidth="180" prefWidth="180"/>
+            </HBox>
+        </bottom>
+    </BorderPane>
+</StackPane>

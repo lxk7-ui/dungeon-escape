@@ -1,0 +1,44 @@
+# ---- Maven / 编译产物 ----
+target/
+
+# ---- Android / Gradle 编译产物 ----
+.gradle/
+**/.gradle/
+build/
+**/build/
+local.properties
+*.apk
+*.aab
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ---- Java 编译产物 ----
+*.class
+
+# ---- IDE 临时文件 ----
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# ---- 操作系统临时文件 ----
+Thumbs.db
+.DS_Store
+
+# ---- 日志与临时文件 ----
+*.log
+*.tmp
+
+# ---- 本地交付物与开发过程文件 ----
+安装包/
+手机UI设计稿/
+accept/
+design-qa.md
+android-app/design-qa.md
+APK安装说明.md
+*.ps1
+Pix.java
+Sample.java
+WhiteBox.java
