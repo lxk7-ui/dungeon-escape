@@ -1,0 +1,303 @@
+/* game.css —— Dungeon Escape 游戏界面与对话框样式（Stage B：与 dungeon-ui.css 石砖外壳统一） */
+
+.root {
+    -fx-background-color: #0a0d12;
+    -fx-font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    -fx-text-fill: #e8eaf0;
+    -fx-font-size: 14px;
+}
+
+/* ---- 游戏界面外壳：内部 BorderPane 透明，露出石砖背景 ---- */
+.game-shell {
+    -fx-background-color: transparent;
+}
+
+/* ---- HUD 顶部：稳定层级，紧凑高度 ---- */
+.game-header {
+    -fx-padding: 12px 24px 10px 24px;
+    -fx-background-color: linear-gradient(to bottom, rgba(10, 14, 20, 0.88), rgba(10, 14, 20, 0.55));
+    -fx-border-color: transparent transparent #2a3140 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.level-name {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffd76a;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(60, 40, 4, 0.85), 0, 0, 0, 2);
+}
+
+.goal-text {
+    -fx-text-fill: #9fe8b8;
+    -fx-font-size: 13px;
+}
+
+.status-bar {
+    -fx-padding: 4px 0 0 0;
+}
+
+.status-caption {
+    -fx-text-fill: #8b96a8;
+    -fx-font-size: 12px;
+}
+
+.status-value {
+    -fx-text-fill: #f2f5ff;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 0, 0, 0, 1);
+}
+
+/* ---- 地图区域 ---- */
+.map-scroll {
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.map-scroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.map-scroll .corner {
+    -fx-background-color: transparent;
+}
+
+/* 深色窄滚动条（与 dungeon-ui.css 同风格）：小窗口按需滚动，默认尺寸不出现 */
+.map-scroll .scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 10px;
+    -fx-pref-height: 10px;
+}
+
+.map-scroll .scroll-bar .thumb {
+    -fx-background-color: #3a4254;
+    -fx-background-radius: 5px;
+}
+
+.map-scroll .scroll-bar .thumb:hover {
+    -fx-background-color: #54627c;
+}
+
+.map-scroll .scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.map-scroll .scroll-bar .increment-button,
+.map-scroll .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+/* 外层居中容器：填满视口，棋盘在其中水平垂直居中（min 尺寸由控制器绑定到视口） */
+.map-outer {
+    -fx-background-color: transparent;
+}
+
+/* 按内容收缩的棋盘框：石板底 + 石质硬边框 + 阴影，与石砖外壳形成清楚层次；
+   不遮挡任何可走格（棋盘自身即地图边界） */
+.board-frame {
+    -fx-background-color: linear-gradient(to bottom, #1b2434, #12161f);
+    -fx-background-radius: 6px;
+    -fx-border-color: #46536b;
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-padding: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 18, 0.35, 0, 4);
+}
+
+.map-grid {
+    -fx-background-color: #12161f;
+}
+
+.map-cell {
+    -fx-background-color: transparent;
+}
+
+/* ---- 底部固定操作栏：不随地图滚动，始终可见 ---- */
+.game-footer {
+    -fx-padding: 10px 16px 12px 16px;
+    -fx-background-color: linear-gradient(to bottom, rgba(10, 14, 20, 0.55), rgba(10, 14, 20, 0.9));
+    -fx-border-color: #2a3140 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ---- 胜利弹窗 ---- */
+.victory-dialog {
+    -fx-background-color: #141a26;
+    -fx-border-color: #ffd76a;
+    -fx-border-width: 2px;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-padding: 20px;
+    -fx-min-width: 640px;
+    -fx-pref-width: 640px;
+}
+
+/* 覆盖 Modena 的 header-panel 白色背景：与弹窗一致的深蓝黑渐变，不再出现白色大块 */
+.victory-dialog .header-panel {
+    -fx-background-color: linear-gradient(to bottom, #232a3a 0%, #1b202c 100%);
+    -fx-background-radius: 12px 12px 0 0;
+    -fx-border-color: transparent transparent #3a4254 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 14px 20px 12px 20px;
+}
+
+.victory-dialog .header-panel .label {
+    -fx-text-fill: #ffd76a;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.victory-dialog .content.label {
+    -fx-text-fill: #9fe8b8;
+    -fx-font-size: 14px;
+}
+
+/* 按钮区：透明背景融入弹窗，不与暗色面板割裂 */
+.victory-dialog .button-bar {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.victory-dialog .button-bar .container {
+    -fx-padding: 14px 16px 16px 16px;
+}
+
+/* “下一关”主按钮：深绿色渐变 + 金色边框 + 黄白粗体文字 + 适度金色发光 */
+.next-level-action,
+.next-level-action:default,
+.next-level-action:focused,
+.next-level-action:focused:default {
+    -fx-background-color: linear-gradient(to bottom, #2f9e44, #1b5e20);
+    -fx-text-fill: #fff3c4;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-border-color: #ffd76a;
+    -fx-border-width: 2px;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 106, 0.40), 14, 0.25, 0, 0);
+}
+
+.next-level-action:hover,
+.next-level-action:default:hover,
+.next-level-action:focused:hover {
+    -fx-background-color: linear-gradient(to bottom, #40c057, #2b8a3e);
+    -fx-text-fill: #fffde7;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 106, 0.65), 20, 0.30, 0, 0);
+}
+
+.next-level-action:pressed,
+.next-level-action:default:pressed {
+    -fx-background-color: linear-gradient(to bottom, #166534, #14532d);
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 106, 0.25), 8, 0.2, 0, 0);
+}
+
+/* “重新开始/选择关卡”次级按钮：低层级，与暗色 UI 一致 */
+.victory-secondary {
+    -fx-background-color: #262b38;
+    -fx-text-fill: #9aa3b2;
+    -fx-border-color: #3a4254;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.victory-secondary:hover {
+    -fx-background-color: #323a4c;
+    -fx-text-fill: #e8eaf0;
+}
+
+.victory-secondary:pressed {
+    -fx-background-color: #1f2430;
+}
+
+/* ---- 错误对话框（Stage B）：暗色石板面板，绝无 Modena 白底 ---- */
+.error-dialog {
+    -fx-background-color: #141a26;
+    -fx-border-color: #a05050;
+    -fx-border-width: 2px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-padding: 16px;
+    -fx-min-width: 520px;
+    -fx-pref-width: 560px;
+}
+
+.error-dialog .header-panel {
+    -fx-background-color: linear-gradient(to bottom, #2a2026 0%, #1b202c 100%);
+    -fx-background-radius: 10px 10px 0 0;
+    -fx-border-color: transparent transparent #5c3a3a transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 14px 18px 12px 18px;
+}
+
+.error-dialog .header-panel .label {
+    -fx-text-fill: #ffb4a0;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.error-dialog .content.label {
+    -fx-text-fill: #d4d9e4;
+    -fx-font-size: 13px;
+}
+
+.error-dialog .button-bar {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.error-dialog .button-bar .container {
+    -fx-padding: 12px 14px 14px 14px;
+}
+
+/* 错误徽记：真实位图，硬边阴影融入暗色 header */
+.error-dialog .graphic-container {
+    -fx-padding: 6px 8px 6px 0;
+}
+
+.error-dialog .graphic-container > .image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 8, 0.3, 0, 2);
+}
+
+/* 确认按钮：暗红金属危险态（与红色边框/徽记统一），focused 金色描边可见 */
+.danger-button,
+.danger-button:default,
+.danger-button:focused,
+.danger-button:focused:default {
+    -fx-background-color: linear-gradient(to bottom, #8a3232, #5a2020);
+    -fx-text-fill: #ffd9d0;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 4px;
+    -fx-border-color: #b05757;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-padding: 10px 26px;
+    -fx-cursor: hand;
+}
+
+.danger-button:hover,
+.danger-button:default:hover {
+    -fx-background-color: linear-gradient(to bottom, #a04040, #7a2c2c);
+    -fx-border-color: #e08a8a;
+}
+
+.danger-button:pressed,
+.danger-button:default:pressed {
+    -fx-background-color: linear-gradient(to bottom, #421818, #331212);
+    -fx-border-color: #7a3a3a;
+}
+
+.danger-button:focused,
+.danger-button:focused:default {
+    -fx-border-color: #ffd76a;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 106, 0.7), 16, 0.45, 0, 0);
+}

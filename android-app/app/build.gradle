@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.dungeonescape.android'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId 'com.example.dungeonescape'
+        minSdk 26
+        targetSdk 36
+        versionCode 24
+        versionName '2.1.0'
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs = [
+                    'src/main/java',
+                    '../../src/main/java/com/example/dungeonescape/model',
+                    '../../src/main/java/com/example/dungeonescape/service',
+                    '../../src/main/java/com/example/dungeonescape/persistence'
+            ]
+            assets.srcDirs = ['src/main/assets']
+            java.exclude '**/LevelLoader.java'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+}

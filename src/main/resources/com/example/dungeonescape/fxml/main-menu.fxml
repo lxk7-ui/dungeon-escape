@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.example.dungeonescape.ui.DungeonBackground?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  主菜单：地牢背景（真实地形素材平铺 + 暗化 + 暗角，见 DungeonBackground）
+  + 居中内容列（标题 / 副标题 / 主按钮 / 次按钮）。
+  按钮均为 focusTraversable=true：Tab/Shift+Tab 循环，Enter/Space 触发，
+  进入页面后初始焦点落在“开始游戏”（MainMenuController#requestInitialFocus）。
+-->
+<StackPane fx:id="rootPane" styleClass="root, dungeon-root"
+           xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.dungeonescape.ui.MainMenuController">
+    <DungeonBackground/>
+    <!-- 内容列：标题/副标题/按钮同一中心轴；石板面板提供稳定层次 -->
+    <VBox styleClass="dungeon-content, menu-panel" alignment="CENTER" spacing="16"
+          maxWidth="560">
+        <Label styleClass="app-title" text="DUNGEON ESCAPE" maxWidth="Infinity"
+               alignment="CENTER" textAlignment="CENTER"/>
+        <Label styleClass="app-subtitle" text="回合制 2D 地牢逃脱" maxWidth="Infinity"
+               alignment="CENTER" textAlignment="CENTER"/>
+        <Region fx:id="menuDivider" styleClass="menu-divider" maxWidth="360" prefWidth="360"
+                minHeight="12" prefHeight="12"/>
+        <VBox styleClass="menu-button-column" alignment="CENTER" spacing="14"
+              maxWidth="280">
+            <Button fx:id="startButton" styleClass="primary-button" text="开始游戏"
+                    onAction="#onStartClick" maxWidth="280" prefWidth="280"/>
+            <Button fx:id="exitButton" styleClass="secondary-button" text="退出游戏"
+                    onAction="#onExitClick" maxWidth="280" prefWidth="280"/>
+        </VBox>
+    </VBox>
+</StackPane>

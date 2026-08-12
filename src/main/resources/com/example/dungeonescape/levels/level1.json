@@ -1,0 +1,38 @@
+{
+  "name": "01基础迷宫",
+  "width": 8,
+  "height": 6,
+  "entities": [
+    { "type": "player", "id": "player", "x": 1, "y": 1 },
+    { "type": "exit", "id": "exit-1", "x": 6, "y": 5 },
+
+    { "type": "wall", "id": "wall-1", "x": 0, "y": 0 },
+    { "type": "wall", "id": "wall-2", "x": 1, "y": 0 },
+    { "type": "wall", "id": "wall-3", "x": 2, "y": 0 },
+    { "type": "wall", "id": "wall-4", "x": 3, "y": 0 },
+    { "type": "wall", "id": "wall-5", "x": 4, "y": 0 },
+    { "type": "wall", "id": "wall-6", "x": 5, "y": 0 },
+    { "type": "wall", "id": "wall-7", "x": 6, "y": 0 },
+    { "type": "wall", "id": "wall-8", "x": 7, "y": 0 },
+    { "type": "wall", "id": "wall-9", "x": 0, "y": 1 },
+    { "type": "wall", "id": "wall-10", "x": 4, "y": 1 },
+    { "type": "wall", "id": "wall-11", "x": 7, "y": 1 },
+    { "type": "wall", "id": "wall-12", "x": 0, "y": 2 },
+    { "type": "wall", "id": "wall-13", "x": 1, "y": 2 },
+    { "type": "wall", "id": "wall-14", "x": 2, "y": 2 },
+    { "type": "wall", "id": "wall-15", "x": 4, "y": 2 },
+    { "type": "wall", "id": "wall-16", "x": 7, "y": 2 },
+    { "type": "wall", "id": "wall-17", "x": 0, "y": 3 },
+    { "type": "wall", "id": "wall-18", "x": 7, "y": 3 },
+    { "type": "wall", "id": "wall-19", "x": 0, "y": 4 },
+    { "type": "wall", "id": "wall-20", "x": 2, "y": 4 },
+    { "type": "wall", "id": "wall-21", "x": 3, "y": 4 },
+    { "type": "wall", "id": "wall-22", "x": 4, "y": 4 },
+    { "type": "wall", "id": "wall-23", "x": 5, "y": 4 },
+    { "type": "wall", "id": "wall-24", "x": 7, "y": 4 },
+    { "type": "wall", "id": "wall-25", "x": 0, "y": 5 },
+    { "type": "wall", "id": "wall-26", "x": 1, "y": 5 },
+    { "type": "wall", "id": "wall-27", "x": 7, "y": 5 }
+  ],
+  "goal": { "type": "EXIT" }
+}
